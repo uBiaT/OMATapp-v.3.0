@@ -19,9 +19,9 @@
         .card-item { background: white; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-bottom: 10px; border: 1px solid #eee; overflow: hidden; }
         .card-body-custom { padding: 12px; display: flex; align-items: flex-start; position: relative; }
         
-        .img-box { position: relative; width: 75px; height: 75px; flex-shrink: 0; margin-right: 12px; cursor: pointer; }
+        .img-box { position: relative; width: 100px; height: 100px; flex-shrink: 0; margin-right: 12px; cursor: pointer; }
         .img-thumb { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; border: 1px solid #eee; }
-        .zoom-icon { position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; padding: 2px 5px; border-radius: 4px 0 4px 0; }
+        .zoom-icon { position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.6); color: white; font-size: 10px; padding: 2px 4px; border-radius: 4px 0 4px 0; }
         
         .info-box { flex-grow: 1; min-width: 0; display: flex; flex-direction: column; }
         .product-name { font-weight: 700; color: #222; margin-bottom: 4px; line-height: 1.3; font-size: 13px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -29,7 +29,7 @@
         .location-badge { font-size: 11px; color: #1565c0; background: #e3f2fd; padding: 1px 6px; border-radius: 4px; width: fit-content; font-weight: bold; border: 1px solid #bbdefb; }
         
         .qty-box { text-align: right; padding-left: 8px; display: flex; flex-direction: column; align-items: flex-end; min-width: 40px; }
-        .qty-text { font-size: 18px; font-weight: 800; color: #333; }
+        .qty-text { font-size: 25px; font-weight: 700; color: #333; }
         .qty-text.red { color: #d32f2f; }
         
         /* Header đơn hàng */

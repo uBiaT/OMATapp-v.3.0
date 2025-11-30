@@ -40,7 +40,7 @@ namespace ShopeeServer
         static async Task Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("=== SHOPEE WMS SERVER (RESTORED STABLE VERSION) ===");
+            Console.WriteLine("=== SHOPEE WMS SERVER ===");
 
             // 1. CHECK AUTH
             if (string.IsNullOrEmpty(ShopeeApiHelper.AccessToken))
@@ -83,7 +83,7 @@ namespace ShopeeServer
             long to = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), from = DateTimeOffset.UtcNow.AddDays(-15).ToUnixTimeSeconds();
 
             string json = await ShopeeApiHelper.GetOrderList(from, to);
-            if (json.Contains("\"error\":\"network_error\""))
+            if (!json.Contains("\"response\""))
             {
                 if (await ShopeeApiHelper.RefreshTokenNow()) json = await ShopeeApiHelper.GetOrderList(from, to);
                 else return;
@@ -120,7 +120,7 @@ namespace ShopeeServer
                                     foreach (var it in o.GetProperty("item_list").EnumerateArray())
                                     {
                                         string name = it.GetProperty("model_name").GetString()!;
-                                        Dictionary<string, string> itemLocation = GetItemLocation(it.GetProperty("model_name").GetString()!);
+                                        Dictionary<string, string> itemLocation = GetItemLocation(name);
                                         ord.Items.Add(new OrderItem
                                         {
                                             ItemId = it.GetProperty("item_id").GetInt64(),

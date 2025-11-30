@@ -24,7 +24,7 @@ namespace ShopeeServer
         public static long ShopId { get; private set; }
         public static string AccessToken { get; private set; } = "";
         public static string RefreshToken { get; private set; } = "";
-        public static string AppPassword { get; private set; } = "";
+        //public static string AppPassword { get; private set; } = "";
 
         static ShopeeApiHelper() { LoadConfig(); }
 
@@ -42,7 +42,7 @@ namespace ShopeeServer
                 PartnerKey = config["PartnerKey"] ?? "";
                 BaseUrl = config["BaseUrl"] ?? "https://partner.shopeemobile.com";
                 CallbackUrl = config["CallbackUrl"] ?? "";
-                AppPassword = config["AppPassword"] ?? "";
+                //AppPassword = config["AppPassword"] ?? "";
 
                 long.TryParse(config["SavedShopId"], out long sid); ShopId = sid;
                 AccessToken = config["SavedAccessToken"] ?? "";
@@ -79,7 +79,11 @@ namespace ShopeeServer
                     Console.WriteLine("[Config] Đã lưu Token mới.");
                 }
             }
-            catch (Exception ex) { Console.WriteLine($"[Save Error] {ex.Message}"); }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Save Error] {ex.Message}");
+                SaveTokenToConfig(ShopId, "","");
+            }
         }
 
         public static string GenerateSignature(string path, long timeStamp, bool isAuth = false)
